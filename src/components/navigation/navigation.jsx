@@ -2,7 +2,25 @@ import { useState } from "react"
 
 
 export function Navigation() {
-    const [closeBtn, setCloseBtn]= useState(true)
+    const [closeBtn, setCloseBtn] = useState(true)
+    
+    
+    const linkList = [
+        {name:"Home", isActive:true},
+        {name:"Property", isActive:false},
+        {name:"About", isActive:false},
+        {name:"Contact", isActive:false},
+    ]
+
+    const [navLinks, setNavLinks] = useState(linkList)
+
+    function btnActiveHandler(name) {
+        setCloseBtn(true);
+
+        setNavLinks((previous) => {
+            return previous.map( item => item.name === name? {...item, isActive:true} : {...item, isActive:false} )
+        })
+    }
     return (
         <div className=' md:flex justify-between items-center  fixed w-full z-10 bg-cream-1 p-4 md:p-10 top-0 text-zinc-500 '>
             <div className="flex items-center gap-2 md:gap-4 ">
@@ -17,19 +35,15 @@ export function Navigation() {
             <div className={`flex flex-row items-center justify-center md:relative fixed bg-cream-1 md:z-auto z-[20] right-0 w-full md:w-auto h-screen md:h-auto transition-all duration-300 ease-linear ${closeBtn? "translate-x-[100%]" : "translate-x-[0]"} md:top-auto md:translate-x-0 top-0`}>
               
                 <ul className="md:flex flex-col md:flex-row md:py-0 py-4 ">
-                    
-                    <li onClick={()=> setCloseBtn(true)} className="cursor-pointer text-xl md:text-base  p-2">Property</li>
-                    <li onClick={()=> setCloseBtn(true)} className="cursor-pointer text-xl md:text-base  p-2">About Us</li>
-                    <li onClick={()=> setCloseBtn(true)} className="cursor-pointer text-xl md:text-base  p-2">Home</li>
-                    <li onClick={()=> setCloseBtn(true)} className="cursor-pointer text-xl md:text-base  p-2">Contact</li>
+                    {navLinks.map((item, index) => <li onClick={()=> btnActiveHandler(item.name)} key={index} className={`cursor-pointer text-xl md:text-base  md:px-2 md:py-1 p-4 hover:text-neutral-800 ${item.isActive? "bg-orange-200":"bg-transparent"}`} >{ item.name}</li>)}
                 </ul>
             </div>
 
 
              <div onClick={()=> setCloseBtn(previous=> !previous)} className="absolute top-6 right-6 z-20 md:hidden flex flex-col gap-[5px] cursor-pointer ">
-                <button className={`origin-top-left bg-zinc-700 h-[3px] rounded-full ${closeBtn? "rotate-[45deg]": "rotate-0"}  w-[24px]  transition-all duration-300 ease-linear`}></button>
-                <button className={` bg-zinc-700 h-[3px] rounded-full  ${closeBtn? "w-0": "w-[24px]"} transition-all duration-300  ease-linear`}></button>
-                <button className={`origin-bottom-left tranlate-x-[100%] bg-zinc-700 h-[3px] rounded-full w-[24px] ${closeBtn? "rotate-[-45deg]": "rotate-0"} transition-all duration-300 ease-linear`}></button>
+                <button className={`origin-top-left bg-zinc-700 h-[3px] rounded-full ${closeBtn? "rotate-0": "rotate-[45deg]"}  w-[24px]  transition-all duration-300 ease-linear`}></button>
+                <button className={`bg-zinc-700 h-[3px] rounded-full  ${closeBtn? "w-[24px]": "w-0"} transition-all duration-300  ease-linear`}></button>
+                <button className={`origin-bottom-left tranlate-x-[100%] bg-zinc-700 h-[3px] rounded-full w-[24px] ${closeBtn? "rotate-0": "rotate-[-45deg]"}   transition-all duration-300 ease-linear`}></button>
             </div>
         </div>
     )
