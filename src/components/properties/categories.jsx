@@ -1,6 +1,6 @@
 
 
-export function Properties() {
+export function Categories() {
 
 
     const logCategory = [
@@ -13,13 +13,13 @@ export function Properties() {
     return (
       
         <div className='py-10 p-10 lg:p-20 '>
-            <div><h1 className='text-4xl  font-semibold text-gray-500 text-center pb-10 '>Our Properties</h1></div>
+            <div><h1 className='text-4xl  font-semibold text-center pb-4 text-zinc-600 '>Our Properties</h1></div>
 
-            
-            <div className='md:flex gap-1 justify-center flex-wrap text-center max-w-[1440px] mx-auto'>
+            <p className='text-center pb-10 italic text-zinc-500 '>We can provide you a property from small lot into large Land Property</p>
+            <div className='md:flex gap-2 justify-center flex-wrap text-center max-w-7xl mx-auto'>
                 {logCategory.map((item, index) => {
                     return (
-                    <div key={index} className='  relative text-white bg-gray-100 mb-1 md:m-0 cursor-pointe rounded overflow-hidden w-full md:w-[49%] xl:w-[24%] cursor-pointer'>
+                    <div key={index} className='  relative text-white bg-zinc-50 mb-1 md:m-0 cursor-pointe rounded overflow-hidden w-full md:w-[49%] xl:w-[24%] cursor-pointer'>
                             <div className='absolute z-[1] translate-x-[-50%] left-1/2 w-full top-1/2 translate-y-[-50%]'>
                                 <h2 className='text-3xl font-semibold p-4'>{item.title}</h2>
                             <p className='px-4 italic '>{item.description}</p>

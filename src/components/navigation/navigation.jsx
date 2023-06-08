@@ -9,7 +9,7 @@ export function Navigation() {
         {name:"Home", isActive:true},
         {name:"Property", isActive:false},
         {name:"About", isActive:false},
-        {name:"Contact", isActive:false},
+
     ]
 
     const [navLinks, setNavLinks] = useState(linkList)
@@ -26,8 +26,8 @@ export function Navigation() {
             <div className="flex items-center gap-2 md:gap-4 ">
                 <img className='h-[50px] md:h-20' src="https://res.cloudinary.com/dbed2fwkj/image/upload/v1685549843/logo_btebvc.png" />
                 <div className="md:flex flex-col">
-                    <p className='text-sm md:text-2xl font-semibold  self-start p-1 md:p-2 bg-zinc-700 text-cream-1'>Mighty Hands</p>
-                    <b className='text-sm md:text-2xl font-semibold  self-start p-1 md:p-2 bg-zinc-700 text-cream-1'>Property</b>
+                    <p className='text-sm md:text-2xl font-semibold  self-start p-1 md:p-2 bg-zinc-800 text-cream-1'>Mighty Hands</p>
+                    <b className='text-sm md:text-2xl font-semibold  self-start p-1 md:p-2 bg-zinc-800 text-cream-1'>Property</b>
                 </div>
             </div>
 
@@ -35,7 +35,7 @@ export function Navigation() {
             <div className={`flex flex-row items-center justify-center md:relative fixed bg-cream-1 md:z-auto z-[20] right-0 w-full md:w-auto h-screen md:h-auto transition-all duration-300 ease-linear ${closeBtn? "translate-x-[100%]" : "translate-x-[0]"} md:top-auto md:translate-x-0 top-0`}>
               
                 <ul className="md:flex flex-col md:flex-row md:py-0 py-4 ">
-                    {navLinks.map((item, index) => <li onClick={()=> btnActiveHandler(item.name)} key={index} className={`cursor-pointer text-xl md:text-base  md:px-2 md:py-1 p-4 hover:text-neutral-800 ${item.isActive? "bg-orange-200":"bg-transparent"}`} >{ item.name}</li>)}
+                    {navLinks.map((item, index) => <li onClick={()=> btnActiveHandler(item.name)} key={index} className={`cursor-pointer text-xl md:text-base  md:px-2 md:py-1 p-4 select-none ${item.isActive? "bg-zinc-800 ":"bg-transparent"}`} >{ item.name}</li>)}
                 </ul>
             </div>
 
