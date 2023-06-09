@@ -22,7 +22,7 @@ export function Navigation() {
         })
     }
     return (
-        <div className=' md:flex justify-between items-center  fixed w-full z-10 bg-cream-1 p-4 md:p-10 top-0 text-zinc-500 '>
+        <div className=' md:flex justify-between items-center  fixed w-full z-50 bg-cream-1 p-4 md:p-10 top-0 text-zinc-500 '>
             <div className="flex items-center gap-2 md:gap-4 ">
                 <img className='h-[50px] md:h-20' src="https://res.cloudinary.com/dbed2fwkj/image/upload/v1685549843/logo_btebvc.png" />
                 <div className="md:flex flex-col">
