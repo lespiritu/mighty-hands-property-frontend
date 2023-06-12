@@ -39,21 +39,29 @@ export function AllProperties() {
 
     }
 
-    const [openCategory, setOpenCategory]= useState(false)
+    const [openCategory, setOpenCategory] = useState(false)
+    
+    function categoryHandler(category) {
+        setCategory(category);
+        setOpenCategory(false)
+    }
     return (
-        <div className=' py-10 bg-[#edeae2]'>
+        <div className=' py-10 bg-[#edeae2] min-h-screen pt-32 md:pt-56'>
             <h1 className='text-center text-4xl font-semibold text-zinc-700 pb-10'>List of our Property</h1>
-            <div className="relative px-10 text-sm  max-w-screen-2xl  mx-auto z-10">
-                
-                <button onClick={() => setOpenCategory(prev => !prev)} className="p-3 bg-zinc-900 text-zinc-200 cursor-pointer select-none w-auto rounded flex gap-2">View by Category {openCategory ? <IconUp className='text-xl'/> : <IconDown className='text-xl'/>} </button>
-                {openCategory && <ul className="flex flex-col justify-center align-middle absolute top-0 translate-y-11 ">
-                    <li onClick={() => setCategory("viewAll")} className="bg-zinc-100 w-[100px] text-sm p-2 hover:bg-zinc-200 cursor-pointer text-zinc-700 select-none">View all</li>
-                    <li onClick={() => setCategory("small")} className="bg-zinc-100 w-[100px] text-sm p-2 hover:bg-zinc-200 cursor-pointer text-zinc-700 select-none">small size</li>
-                    <li onClick={() => setCategory("medium")} className="bg-zinc-100 w-[100px] text-sm p-2 hover:bg-zinc-200 cursor-pointer text-zinc-700 select-none">medium size</li>
-                    <li onClick={() => setCategory("large")} className="bg-zinc-100 w-[100px] text-sm p-2 hover:bg-zinc-200 cursor-pointer text-zinc-700 select-none">Large size</li>
-                </ul>}
+            <div className=" relative px-10 text-sm mx-auto  max-w-screen-2xl z-10  w-full ">
+                  
+                <button onClick={() => setOpenCategory(prev => !prev)} className=" z-10 p-3 bg-zinc-900 text-zinc-200 cursor-pointer select-none md:w-1/4 rounded flex justify-between gap-2 w-full">View by Category {openCategory ? <IconUp className='text-xl'/> : <IconDown className='text-xl'/>} </button>
+                <div className={`relative w-full md:w-1/4 bg-red-100 ${openCategory ? `h-auto` : `h-0`}  overflow-hidden transition-all ease-linear`}>
+                     {<ul className={`flex flex-col justify-center  align-middle  w-full -z-20 md:w-auto `}>
+                        <li onClick={() => categoryHandler("viewAll")} className="bg-zinc-100  text-sm p-2 hover:bg-zinc-200 cursor-pointer text-zinc-700 select-none">View all</li>
+                        <li onClick={() => categoryHandler("small")} className="bg-zinc-100  text-sm p-2 hover:bg-zinc-200 cursor-pointer text-zinc-700 select-none">small size</li>
+                        <li onClick={() => categoryHandler("medium")} className="bg-zinc-100  text-sm p-2 hover:bg-zinc-200 cursor-pointer text-zinc-700 select-none">medium size</li>
+                        <li onClick={() => categoryHandler("large")} className="bg-zinc-100  text-sm p-2 hover:bg-zinc-200 cursor-pointer text-zinc-700 select-none">Large size</li>
+                    </ul>}
+                </div>
                 
             </div>
+
             <div className='w-full pt-5 px-10 mx-auto max-w-screen-2xl  sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 '>
             {displayData(category)}
             

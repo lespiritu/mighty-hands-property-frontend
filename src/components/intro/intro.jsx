@@ -8,7 +8,7 @@ export function Intro(props) {
     <div className=" bg-cream-1 w-full">
        <div className="md:flex py-20 w-full max-w-screen-2xl mx-auto">
           
-          <div className="bg-intro-bg md:ml-[15%]  w-full md:w-1/2 mx-auto  bg-no-repeat bg-center bg-cover h-[300px] md:h-auto rounded-lg">
+          <div className="bg-intro-bg md:ml-[15%]  w-full md:w-1/2 mx-auto  bg-no-repeat bg-center bg-cover h-[300px] md:h-auto md:rounded-lg">
               
            
           </div>
