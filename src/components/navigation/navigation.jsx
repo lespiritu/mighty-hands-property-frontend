@@ -21,7 +21,8 @@ export function Navigation() {
             return previous.map( item => item.name === name? {...item, isActive:true} : {...item, isActive:false} )
         })
 
-        
+         document.body.scrollTop = 0; // For Safari
+         document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     }
     return (
         <div className=' md:flex justify-between items-center  fixed w-full z-50 bg-cream-1 p-4 md:p-10 top-0 text-zinc-500 '>

@@ -2,7 +2,7 @@
 
 export function About() {
     return (
-        <div className="text-gray-500 bg-cream-1 min-h-screen pt-32 md:pt-56 ">
+        <div id="About" className="text-gray-500 bg-cream-1 min-h-screen pt-32 md:pt-56 ">
             <div><h1 className='text-4xl  font-semibold text-gray-600 text-center pb-10 '>About Us</h1></div>
             
             <div className="px-10 md:px-20 text-justify">
