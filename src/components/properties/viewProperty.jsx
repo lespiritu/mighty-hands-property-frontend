@@ -41,8 +41,9 @@ export function ViewProperty() {
     return (
         <div className='pt-32 md:pt-56'>
             <div className='p-10 max-w-7xl mx-auto'>
-                <h1 className='text-4xl font-semibold text-zinc-700 pb-20 text-center '>{ propertyData.propertyName}</h1>
-
+                <h1 className='text-4xl font-semibold text-zinc-700 text-center '>{ propertyData.propertyName}</h1>
+                <p className="text-justify md:max-w-2xl mx-auto italic text-zinc-500 py-10 ">{propertyData.descriptions} </p>
+                
                 <div className='md:flex'>
                     <img className='md:w-1/2 object-cover rounded-md border border-orange-300 ' src={propertyData.images ? propertyData.images[0] : defaltImage  } />
                     <div className="lg:p-20  md:p-10 py-10  md:w-1/2 w-full ">
@@ -58,7 +59,7 @@ export function ViewProperty() {
                 </div>
 
                   <div className='md:flex flex-row-reverse'>
-                        <img className='md:w-1/2 object-cover rounded-md border border-orange-300 ' src="https://res.cloudinary.com/dupguftn4/image/upload/v1686283140/intro-1000x800_znouy8.jpg"/>
+                        <img className='md:w-1/2 object-cover rounded-md border border-orange-300 ' src={propertyData.images ? propertyData.images[1] : defaltImage  }/>
                     <div className="lg:p-20  md:p-10 py-10  md:w-1/2 w-full ">
                         <h1 className='text-2xl font-semibold pb-4 text-zinc-600'>More details</h1>
                         <ul className="text-zinc-500 ">
@@ -70,11 +71,10 @@ export function ViewProperty() {
 
                 <div className='text-center md:p-10 border-t mt-4 md:mt-10'>
                     <div className='flex gap-2 pt-10 flex-col md:flex-row'>
-                        <img className='md:w-1/2 object-cover rounded-md border border-orange-300 ' src="https://res.cloudinary.com/dupguftn4/image/upload/v1686283140/intro-1000x800_znouy8.jpg" />
-                        <img className='md:w-1/2 object-cover rounded-md border border-orange-300 ' src="https://res.cloudinary.com/dupguftn4/image/upload/v1686283140/intro-1000x800_znouy8.jpg"/>
+                        <img className='md:w-1/2 object-cover rounded-md border border-orange-300 ' src={propertyData.images ? propertyData.images[2] : defaltImage  }/>
+                        <img className='md:w-1/2 object-cover rounded-md border border-orange-300 ' src={propertyData.images ? propertyData.images[3] : defaltImage  }/>
                     </div>
-                    <h1 className='text-2xl py-4 text-zinc-600 font-semibold'>Descriptions</h1>
-                    <p className="text-center md:max-w-4xl mx-auto italic text-zinc-500 ">{propertyData.descriptions}</p>
+                
                 </div>
              </div>
         </div>
