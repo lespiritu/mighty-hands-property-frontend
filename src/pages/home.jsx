@@ -5,7 +5,7 @@ export function Home() {
         <div className="pt-20">
             <Hero title="Choose to live that provides your family the ultimate sanctuary" />
 
-            <Intro textDetails="Et laboris mollit culpa et dolor cillum nostrud eu deserunt elit elit consectetur. Esse quis cupidatat dolore tempor esse. Elit Lorem aute do minim magna Lorem magna magna velit enim est deserunt."
+            <Intro textDetails="Property values have historically tended to increase over the long term. While short-term fluctuations are possible, real estate investments have the potential to appreciate in value over time, allowing investors to generate profit when they sell the property."
             title="Land Property is a good investment"
             />
 

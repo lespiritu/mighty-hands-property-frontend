@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
 import { CardProperty } from "../cardProperty";
 import axios from "axios";
-import {BiChevronDown as IconDown, BiChevronUp as IconUp} from 'react-icons/bi'
+import { BiChevronDown as IconDown, BiChevronUp as IconUp } from 'react-icons/bi'
+
+import {RotatingLines } from 'react-loader-spinner'
 
 export function AllProperties() {
 
     const [propertyData, setPropertyData] = useState([])
 
     const [category, setCategory] = useState('viewAll')
+    const [isloading, setIsLoading] = useState(true)
 
     useEffect(() => {
         async function getProperty() {
@@ -20,7 +23,8 @@ export function AllProperties() {
             
         }
 
-        getProperty()
+        getProperty();
+        setIsLoading(false)
 
     },[])
 
@@ -62,12 +66,23 @@ export function AllProperties() {
                 
             </div>
 
+            
+            {isloading ? <div className='flex justify-center py-28 opacity-30'>
+                <RotatingLines
+                    strokeColor="grey"
+                    strokeWidth="5"
+                    animationDuration="0.75"
+                    width="96"
+                    visible={true}
+            /> 
+            </div>
+                    :
             <div className='w-full pt-5 px-10 mx-auto max-w-screen-2xl  sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 '>
             {displayData(category)}
-            
             </div>
+                
+            } 
 
-        
 
         </div>
     )
