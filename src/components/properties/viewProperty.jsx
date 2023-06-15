@@ -3,11 +3,12 @@ import { useEffect, useState } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 import {BsFillCheckCircleFill as IconCheck} from 'react-icons/bs'
 
-export function ViewProperty() {
+export  function ViewProperty() {
 
       const navigate = useNavigate();
     const { _id } = useParams();
     const [propertyData, setPropertyData] = useState([])
+
     useEffect(() => {
        async function getProperty() {
              const result = await axios.get(`https://sore-cyan-turtle-wrap.cyclic.app/api/property/viewSingleProperty/${_id.slice(0,24)}`)
@@ -37,7 +38,7 @@ export function ViewProperty() {
     // reference
     console.log(propertyData);
 
-    const defaltImage = "https://res.cloudinary.com/dupguftn4/image/upload/v1686283140/intro-1000x800_znouy8.jpg"
+    const defaltImage = "https://res.cloudinary.com/dupguftn4/image/upload/v1686801265/default_image_ocqf1t.jpg"
     return (
         <div className='pt-32 md:pt-56'>
             <div className='p-10 max-w-7xl mx-auto'>
@@ -59,7 +60,7 @@ export function ViewProperty() {
                 </div>
 
                   <div className='md:flex flex-row-reverse'>
-                        <img className='md:w-1/2 object-cover rounded-md border border-orange-300 ' src={propertyData.images ? propertyData.images[1] : defaltImage  }/>
+                        <img className='md:w-1/2 object-cover rounded-md border border-orange-300 ' src={propertyData.images && propertyData.images.length > 1 ? propertyData.images[1] : defaltImage  }/>
                     <div className="lg:p-20  md:p-10 py-10  md:w-1/2 w-full ">
                         <h1 className='text-2xl font-semibold pb-4 text-zinc-600'>More details</h1>
                         <ul className="text-zinc-500 ">
@@ -70,9 +71,10 @@ export function ViewProperty() {
                 </div>
 
                 <div className='text-center md:p-10 border-t mt-4 md:mt-10'>
-                    <div className='flex gap-2 pt-10 flex-col md:flex-row'>
-                        <img className='md:w-1/2 object-cover rounded-md border border-orange-300 ' src={propertyData.images ? propertyData.images[2] : defaltImage  }/>
-                        <img className='md:w-1/2 object-cover rounded-md border border-orange-300 ' src={propertyData.images ? propertyData.images[3] : defaltImage  }/>
+                    <h1 className='text-2xl font-semibold pb-4 text-zinc-600'>Images</h1>
+                    <div className='flex gap-2 flex-col md:flex-row'>
+                        <img className='md:w-1/2 object-cover rounded-md border border-orange-300 ' src={propertyData.images && propertyData.images.length > 2  ? propertyData.images[2] : defaltImage  }/>
+                        <img className='md:w-1/2 object-cover rounded-md border border-orange-300 ' src={propertyData.images && propertyData.images.length > 3  ? propertyData.images[3] : defaltImage  }/>
                     </div>
                 
                 </div>
