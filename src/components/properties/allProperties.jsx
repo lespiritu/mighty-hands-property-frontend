@@ -16,7 +16,8 @@ export function AllProperties() {
         async function getProperty() {
            const result = await axios.get(`https://sore-cyan-turtle-wrap.cyclic.app/api/property/viewAllProperty`)
             try {
-                return setPropertyData(result.data.data);
+                 setPropertyData(result.data.data);
+                setIsLoading(false)
             } catch (error) {
                 console.log(result.data.status);
             }
@@ -24,7 +25,7 @@ export function AllProperties() {
         }
 
         getProperty();
-        setIsLoading(false)
+        
 
     },[])
 
