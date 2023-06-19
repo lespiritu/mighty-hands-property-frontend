@@ -27,7 +27,7 @@ export function Navigation() {
     return (
         <div className=' md:flex justify-between items-center  fixed w-full z-50 bg-cream-1 p-4 md:p-10 top-0 text-zinc-500 '>
             <div className="flex items-center gap-2 md:gap-4 ">
-                <NavLink to={'/'}><img className='h-[50px] md:h-20' src="https://res.cloudinary.com/dbed2fwkj/image/upload/v1685549843/logo_btebvc.png" /></NavLink>
+                <NavLink to={'/'}><img onClick={() => btnActiveHandler("Home")} className='h-[50px] md:h-20' src="https://res.cloudinary.com/dbed2fwkj/image/upload/v1685549843/logo_btebvc.png" /></NavLink>
                 <div className="md:flex flex-col">
                     <p className='text-sm md:text-2xl font-semibold  self-start p-1 md:p-2 bg-zinc-800 text-cream-1'>Mighty Hands</p>
                     <b className='text-sm md:text-2xl font-semibold  self-start p-1 md:p-2 bg-zinc-800 text-cream-1'>Property</b>
