@@ -33,11 +33,17 @@ export function AllProperties() {
     function displayData(category) {
         
         if (category === "viewAll") {
-            return propertyData.map((item, index) => <CardProperty key={index} {...item} />)
+        
+          
+           const cardData = propertyData.map((item, index) => <CardProperty key={index} {...item} />)
+            
+            return cardData.reverse()
         }
         else {
             const smallProperties = propertyData.filter(item => item.category === category);
-             return smallProperties.map((item, index) => <CardProperty key={index} {...item} />) 
+            const cardData = smallProperties.map((item, index) => <CardProperty key={index} {...item} />) 
+            
+            return cardData.reverse();
         }
 
        
