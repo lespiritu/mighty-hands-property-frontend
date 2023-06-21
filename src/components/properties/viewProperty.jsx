@@ -5,9 +5,12 @@ import {BsFillCheckCircleFill as IconCheck} from 'react-icons/bs'
 
 export  function ViewProperty() {
 
-      const navigate = useNavigate();
+    const defaltImage = "https://res.cloudinary.com/dupguftn4/image/upload/v1686801265/default_image_ocqf1t.jpg"
+    const navigate = useNavigate();
+
     const { _id } = useParams();
     const [propertyData, setPropertyData] = useState([])
+    const [viewImage, setViewImage] = useState(defaltImage)
 
     useEffect(() => {
        async function getProperty() {
@@ -17,7 +20,8 @@ export  function ViewProperty() {
                if (result.data.status==='success') {
                    console.log('success');
                    console.log(result.data);
-                   setPropertyData(result.data.viewSingleProperty)
+                   setPropertyData(result.data.viewSingleProperty);
+                   setViewImage(result.data.viewSingleProperty.images[0])
                }
                else {
                     navigate('/*');
@@ -38,9 +42,9 @@ export  function ViewProperty() {
     // reference
     console.log(propertyData);
 
-    const defaltImage = "https://res.cloudinary.com/dupguftn4/image/upload/v1686801265/default_image_ocqf1t.jpg"
+  
     return (
-        <div className='pt-32 md:pt-56'>
+        <div className=' pt-32 md:pt-56'>
             <div className='p-10 max-w-7xl mx-auto'>
                 <h1 className='text-4xl font-semibold text-zinc-700 text-center '>{ propertyData.propertyName}</h1>
                 <p className="text-justify md:max-w-2xl mx-auto italic text-zinc-500 py-10 ">{propertyData.descriptions} </p>
@@ -70,14 +74,24 @@ export  function ViewProperty() {
                     </div>
                 </div>
 
-                <div className='text-center md:p-10 border-t mt-4 md:mt-10'>
-                    <h1 className='text-2xl font-semibold pb-4 text-zinc-600'>Images</h1>
-                    <div className='flex gap-2 flex-col md:flex-row'>
-                        <img className='md:w-1/2 object-cover rounded-md border border-orange-300 ' src={propertyData.images && propertyData.images.length > 2  ? propertyData.images[2] : defaltImage  }/>
-                        <img className='md:w-1/2 object-cover rounded-md border border-orange-300 ' src={propertyData.images && propertyData.images.length > 3  ? propertyData.images[3] : defaltImage  }/>
+                <div className='text-center pt-10  mt-4 md:mt-10 w-full md:w-3/4 mx-auto   '>
+                    <h1 className='text-2xl font-semibold pb-8 text-zinc-600'>Images</h1>
+
+                    <div className='hidden md:flex overflow-scroll md:overflow-hidden w-full'>
+                     {  propertyData.images && <img className="w-full rounded-md border border-orange-300 " src={viewImage} />}
                     </div>
-                
+
+                   <div className='md:hidden gap-2 flex overflow-x-auto w-full'>
+                     {  propertyData.images && propertyData.images.map((item, index)=> <img key={index} className="w-full rounded-md border border-orange-300 " src={item} />)}
+                    </div>
+
+                  
+                    <div className="hidden pt-2 md:flex gap-1 overflow-x-auto w-full">
+                        {propertyData.images && propertyData.images.map((item, index) => <img onClick={()=> setViewImage(item)} className="rounded border border-orange-300  w-1/5 md:w-1/12 cursor-pointer " key={index} src={item } />)} 
+                    </div>
                 </div>
+
+             
              </div>
         </div>
     )
